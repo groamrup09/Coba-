@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineBook - Pemesanan Tiket Bioskop | SI2A</title>
     <style>
-        /* ==================== RESET & GLOBAL ==================== */
         * {
             margin: 0;
             padding: 0;
@@ -25,7 +24,6 @@
             margin: 0 auto;
         }
 
-        /* ==================== HEADER ==================== */
         .header {
             background: linear-gradient(135deg, #1a1a3e, #2d2d5e);
             padding: 20px 30px;
@@ -52,27 +50,6 @@
             font-size: 13px;
         }
 
-        .header .badge {
-            background: #2ecc71;
-            color: #fff;
-            padding: 4px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .header-user {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .header-user span {
-            color: #aaa;
-            font-size: 14px;
-        }
-
-        /* ==================== SIMULATOR PANEL ==================== */
         .simulator-panel {
             background: #111132;
             border-radius: 16px;
@@ -95,7 +72,6 @@
             margin-bottom: 15px;
         }
 
-        /* ==================== FORM TAMBAH ==================== */
         .form-row {
             display: flex;
             gap: 15px;
@@ -113,10 +89,6 @@
             font-size: 14px;
             flex: 1;
             min-width: 200px;
-        }
-
-        .form-row input::placeholder {
-            color: #6666aa;
         }
 
         .form-row input:focus {
@@ -150,17 +122,9 @@
             color: #fff;
         }
 
-        .btn-success:hover {
-            background: #27ae60;
-        }
-
         .btn-danger {
             background: #e74c3c;
             color: #fff;
-        }
-
-        .btn-danger:hover {
-            background: #c0392b;
         }
 
         .btn-warning {
@@ -168,19 +132,14 @@
             color: #fff;
         }
 
-        .btn-warning:hover {
-            background: #d68910;
-        }
-
         .btn-small {
             padding: 6px 16px;
             font-size: 12px;
         }
 
-        /* ==================== DAFTAR PEMBELI ==================== */
         .pembeli-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 12px;
             margin: 15px 0;
         }
@@ -221,22 +180,13 @@
             padding: 2px 10px;
             border-radius: 12px;
             display: inline-block;
-        }
-
-        .tiket-count.active {
             background: rgba(46, 204, 113, 0.2);
             color: #2ecc71;
         }
 
-        .tiket-count.full {
-            background: rgba(231, 76, 60, 0.2);
-            color: #e74c3c;
-        }
-
-        /* ==================== ARMADA ==================== */
         .film-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 20px;
             margin-top: 15px;
         }
@@ -251,6 +201,11 @@
 
         .film-card:hover {
             border-color: #4a4a8a;
+        }
+
+        .film-card.selected {
+            border-color: #FFD700;
+            background: rgba(255, 215, 0, 0.05);
         }
 
         .film-card .type-badge {
@@ -309,31 +264,6 @@
             margin-top: 15px;
         }
 
-        .film-card .aksi .btn {
-            flex: 1;
-        }
-
-        .film-card .penyewa-aktif {
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 8px;
-            padding: 8px 12px;
-            margin-top: 10px;
-            font-size: 12px;
-            color: #FFD700;
-        }
-
-        .film-card .status-tersedia {
-            color: #2ecc71;
-            font-weight: bold;
-        }
-
-        .film-card .status-dipesan {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-
-        /* ==================== KURSI ==================== */
         .seat-map-container {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 12px;
@@ -409,10 +339,6 @@
             pointer-events: none;
         }
 
-        .seat.vip {
-            background: #8e44ad;
-        }
-
         .seat.vip.available {
             background: #8e44ad;
         }
@@ -438,7 +364,6 @@
             border-radius: 4px;
         }
 
-        /* ==================== RINGKASAN ==================== */
         .summary {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 107, 107, 0.1));
             border-radius: 15px;
@@ -464,14 +389,12 @@
             font-weight: bold;
         }
 
-        /* ==================== TIKET ==================== */
         .tiket-card {
             background: linear-gradient(135deg, #1a1a2e, #2d2d44);
             border-radius: 15px;
             padding: 20px;
             margin: 15px 0;
             border: 1px solid #FFD700;
-            position: relative;
         }
 
         .tiket-card .tiket-header {
@@ -503,7 +426,23 @@
             font-weight: bold;
         }
 
-        /* ==================== TERMINAL ==================== */
+        .tiket-barcode {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed rgba(255, 215, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tiket-barcode img {
+            height: 60px;
+            background: white;
+            padding: 6px;
+            border-radius: 6px;
+        }
+
         .terminal {
             background: #0a0a22;
             border-radius: 12px;
@@ -521,27 +460,12 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        .terminal .log-line.success {
-            color: #2ecc71;
-        }
+        .terminal .log-line.success { color: #2ecc71; }
+        .terminal .log-line.error { color: #e74c3c; }
+        .terminal .log-line.info { color: #3498db; }
+        .terminal .log-line.gold { color: #FFD700; }
+        .terminal .log-line.dim { color: #666; }
 
-        .terminal .log-line.error {
-            color: #e74c3c;
-        }
-
-        .terminal .log-line.info {
-            color: #3498db;
-        }
-
-        .terminal .log-line.gold {
-            color: #FFD700;
-        }
-
-        .terminal .log-line.dim {
-            color: #666;
-        }
-
-        /* ==================== OOP PILAR ==================== */
         .oop-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -567,47 +491,6 @@
             line-height: 1.6;
         }
 
-        /* ==================== FOOTER ==================== */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            color: #555;
-            font-size: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* ==================== RESPONSIVE ==================== */
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .film-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pembeli-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .tiket-card .tiket-body {
-                grid-template-columns: 1fr;
-            }
-
-            .seat {
-                width: 30px;
-                height: 30px;
-                font-size: 8px;
-            }
-
-            .container {
-                padding: 10px;
-            }
-        }
-
-        /* ==================== DISKON ==================== */
         .diskon-grid {
             display: flex;
             gap: 15px;
@@ -634,7 +517,6 @@
             font-size: 14px;
         }
 
-        /* ==================== TABS ==================== */
         .tabs {
             display: flex;
             gap: 10px;
@@ -672,6 +554,226 @@
         .tab-content.active {
             display: block;
         }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #555;
+            font-size: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ==================== DIAGRAM TABS ==================== */
+        .diag-tabs {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            border-bottom: 1px solid #2a2a5a;
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .diag-tab-btn {
+            padding: 8px 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid #2a2a5a;
+            border-radius: 6px;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .diag-tab-btn:hover {
+            border-color: #FFD700;
+            color: #fff;
+        }
+
+        .diag-tab-btn.active {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            border-color: #FFD700;
+        }
+
+        .diag-tab-content {
+            display: none;
+        }
+
+        .diag-tab-content.active {
+            display: block;
+        }
+
+        .mermaid {
+            background: #0a0a22;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #2a2a5a;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mermaid svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .code-viewer-card {
+            background: #111132;
+            border-radius: 16px;
+            border: 1px solid #2a2a5a;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .code-viewer-card .card-title {
+            font-size: 18px;
+            color: #FFD700;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #2a2a5a;
+            padding-bottom: 10px;
+        }
+
+        .code-viewer-card .card-title span {
+            color: #FF6B6B;
+        }
+
+        .code-wrapper {
+            background: #050515;
+            border: 1px solid #2a2a5a;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .code-wrapper pre {
+            margin: 0;
+            overflow-x: auto;
+            max-height: 500px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #a0a0c0;
+        }
+
+        .code-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn-copy {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            border: 1px solid #FFD700;
+            padding: 6px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 12px;
+            transition: all 0.3s;
+        }
+
+        .btn-copy:hover {
+            background: #FFD700;
+            color: #111132;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #111132;
+            border: 2px solid #FFD700;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 900px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.25);
+        }
+
+        .modal-header {
+            padding: 15px 25px;
+            border-bottom: 1px solid #2a2a5a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: #ff3333;
+        }
+
+        .modal-body {
+            flex: 1;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .film-grid {
+                grid-template-columns: 1fr;
+            }
+            .pembeli-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .tiket-card .tiket-body {
+                grid-template-columns: 1fr;
+            }
+            .seat {
+                width: 30px;
+                height: 30px;
+                font-size: 8px;
+            }
+            .container {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -683,9 +785,10 @@
             <h1>🎬 CineBook</h1>
             <div class="subtitle">Sistem Pemesanan Tiket Bioskop (Tugas Kelompok)</div>
         </div>
-        <div style="display:flex; align-items:center; gap:15px; flex-wrap:wrap;">
-            <span class="badge">🟢 ONLINE</span>
-            
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span style="color:#8888bb; font-size:13px;">📌 SI2A</span>
+            <span style="color:#8888bb; font-size:13px;">|</span>
+            <span style="color:#8888bb; font-size:13px;">👥 2 Anggota</span>
         </div>
     </div>
 
@@ -711,6 +814,7 @@
         <button class="tab-btn" data-tab="tiket" onclick="switchTab('tiket')">🎟️ Tiket Saya</button>
         <button class="tab-btn" data-tab="laporan" onclick="switchTab('laporan')">📊 Laporan</button>
         <button class="tab-btn" data-tab="oop" onclick="switchTab('oop')">🧠 Pilar OOP</button>
+        <button class="tab-btn" data-tab="source" onclick="switchTab('source')">💻 Source Code</button>
     </div>
 
     <!-- ============================================================ -->
@@ -723,18 +827,12 @@
         </div>
 
         <div class="simulator-panel">
-            <h2>🎫 PROMO DISKON</h2>
-            <div class="diskon-grid" id="diskonGrid"></div>
-        </div>
-
-        <div class="simulator-panel">
             <h2>📌 CARA BOOKING</h2>
             <ol style="padding-left:20px; color:#aaa; line-height:2;">
                 <li>Klik tab <strong>Booking</strong> di atas</li>
                 <li>Pilih film yang ingin ditonton</li>
                 <li>Pilih studio dan jam tayang</li>
                 <li>Pilih kursi (hijau = tersedia, merah = terisi)</li>
-                <li>Masukkan kode diskon (opsional)</li>
                 <li>Klik <strong>Pesan Tiket</strong></li>
             </ol>
         </div>
@@ -748,14 +846,12 @@
             <h2>🎬 DASHBOARD BOOKING TIKET</h2>
             <div class="sub">Pilih film, studio, dan kursi yang diinginkan. Maksimal 5 tiket per transaksi.</div>
 
-            <!-- Pilih Pembeli -->
             <div style="margin: 15px 0;">
                 <h3 style="color:#FFD700; font-size:15px;">👤 PILIH PEMBELI</h3>
                 <div class="pembeli-grid" id="pembeliGrid"></div>
             </div>
 
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:15px;">
-                <!-- KIRI: Pilihan Film -->
                 <div>
                     <h3 style="color:#FFD700; font-size:15px;">🎥 PILIH FILM</h3>
                     <div class="film-grid" id="bookingFilmGrid" style="grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));"></div>
@@ -774,14 +870,8 @@
                         <button class="btn btn-small" data-time="19:30" onclick="pilihWaktu('19:30')">19:30</button>
                         <button class="btn btn-small" data-time="21:45" onclick="pilihWaktu('21:45')">21:45</button>
                     </div>
-
-                    <h3 style="color:#FFD700; font-size:15px; margin-top:20px;">🎫 KODE DISKON</h3>
-                    <div class="form-row">
-                        <input type="text" id="kodeDiskonInput" placeholder="Masukkan kode diskon (STUDENT10, FAMILY20, WEEKEND15)">
-                    </div>
                 </div>
 
-                <!-- KANAN: Denah Kursi -->
                 <div>
                     <h3 style="color:#FFD700; font-size:15px;">💺 PILIH KURSI</h3>
                     <div class="seat-map-container">
@@ -797,14 +887,12 @@
                 </div>
             </div>
 
-            <!-- RINGKASAN -->
             <div class="summary" id="bookingSummary">
                 <div class="summary-row"><span>👤 Pembeli</span><span id="summaryPembeli">-</span></div>
                 <div class="summary-row"><span>🎬 Film</span><span id="summaryFilm">-</span></div>
                 <div class="summary-row"><span>🏢 Studio</span><span id="summaryStudio">-</span></div>
                 <div class="summary-row"><span>🕐 Jam</span><span id="summaryTime">-</span></div>
                 <div class="summary-row"><span>💺 Kursi</span><span id="summarySeats">-</span></div>
-                <div class="summary-row"><span>🎫 Diskon</span><span id="summaryDiskon">-</span></div>
                 <div class="summary-row summary-total"><span>💰 Total</span><span id="summaryTotal">Rp 0</span></div>
             </div>
 
@@ -849,63 +937,130 @@
             <div class="oop-grid">
                 <div class="oop-card">
                     <h4>1. ENKAPSULASI</h4>
-                    <p>Status internal film/kursi disembunyikan dan hanya dapat diubah secara aman lewat metode pesanTiket() dan batalTiket(). Jumlah tiket per pembeli juga dijaga oleh batas aturan (maks 5 tiket).</p>
+                    <p>Status internal film/kursi disembunyikan dan hanya dapat diubah secara aman lewat metode pesanTiket() dan batalTiket().</p>
                 </div>
                 <div class="oop-card">
                     <h4>2. PEWARISAN (INHERITANCE)</h4>
-                    <p>Kelas Film dan Studio mewarisi data dasar dari kelas induk. Ini menghindari redundansi properti dasar seperti nama, harga, dan ketersediaan.</p>
+                    <p>Kelas Film dan Studio mewarisi data dasar dari kelas induk. Menghindari redundansi properti dasar.</p>
                 </div>
                 <div class="oop-card">
                     <h4>3. POLIMORFISME</h4>
-                    <p>Metode tampilkanInfo() di kelas induk di-override pada kelas Film dan Studio untuk memproses dan mencetak properti spesifik masing-masing objek.</p>
+                    <p>Metode tampilkanInfo() di kelas induk di-override pada kelas Film dan Studio.</p>
                 </div>
                 <div class="oop-card">
                     <h4>4. INTERAKSI OBJEK</h4>
-                    <p>Objek Pembeli memanggil metode pada objek Film dan Kursi untuk mengubah ketersediaan. Hubungan pemesanan diabadikan menggunakan objek Tiket.</p>
+                    <p>Objek Pembeli memanggil metode pada objek Film dan Kursi untuk mengubah ketersediaan.</p>
                 </div>
             </div>
         </div>
 
         <div class="simulator-panel">
             <h2>📊 DIAGRAM KELAS (UML)</h2>
-            <div style="font-family:'Courier New',monospace; font-size:13px; color:#aaa; background:#0a0a22; padding:20px; border-radius:12px; overflow-x:auto; white-space:pre;">
-                ┌─────────────────────┐          ┌─────────────────────┐
-                │       FILM          │          │      STUDIO          │
-                ├─────────────────────┤          ├─────────────────────┤
-                │ - id: int           │          │ - id: int           │
-                │ - judul: String     │          │ - nama: String      │
-                │ - harga: int        │          │ - multiplier: double│
-                │ - rating: int       │          ├─────────────────────┤
-                ├─────────────────────┤          │ + info(): String    │
-                │ + info(): String    │          └─────────────────────┘
-                └─────────────────────┘                    △
-                         │                                 │
-                         │ (Memiliki)                      │ (Memiliki)
-                         │ 1                              │ 1
-                         ▼                                 │
-                ┌─────────────────────┐          ┌─────────────────────┐
-                │       TIKET         │          │       KURSI          │
-                ├─────────────────────┤          ├─────────────────────┤
-                │ - id: String        │          │ - kode: String      │
-                │ - pembeli: String   │          │ - dipesan: bool     │
-                │ - film: String      │          │ - harga: int        │
-                │ - studio: String    │          ├─────────────────────┤
-                │ - kursi: String     │          │ + pesan(): void     │
-                │ - total: int        │          │ + batalPesan(): void│
-                ├─────────────────────┤          └─────────────────────┘
-                │ + cetak(): String   │
-                └─────────────────────┘
-                         │
-                         │ (Memiliki)
-                         │ *
-                ┌─────────────────────┐
-                │      PEMBELI        │
-                ├─────────────────────┤
-                │ - nama: String      │
-                │ - tiket: List       │
-                ├─────────────────────┤
-                │ + beliTiket(): void │
-                └─────────────────────┘
+            <div class="mermaid">
+classDiagram
+    class Film {
+        +int id
+        +String judul
+        +int harga
+        +int rating
+        +String genre
+        +info()
+    }
+    class Studio {
+        +int id
+        +String nama
+        +double multiplier
+        +info()
+    }
+    class Kursi {
+        +String kode
+        +bool dipesan
+        +int harga
+        +String tipe
+        +pesan()
+        +batalPesan()
+    }
+    class Pembeli {
+        +String nama
+        +List tiketList
+        +beliTiket()
+    }
+    class Tiket {
+        +String id
+        +String nama
+        +String film
+        +String studio
+        +String kursi
+        +int total
+        +int hargaAwal
+        +String diskon
+        +String tanggal
+        +cetak()
+    }
+    Pembeli --> Tiket : Memiliki
+    Tiket --> Film : Memesan
+    Tiket --> Studio : Di
+    Tiket --> Kursi : Memilih
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TAB: SOURCE CODE -->
+    <!-- ============================================================ -->
+    <div id="tab-source" class="tab-content">
+        <div class="code-viewer-card">
+            <div class="card-title">
+                <span>SOURCE_CODE</span> FILE INSPECTOR
+            </div>
+            <div class="code-wrapper">
+                <div class="code-actions">
+                    <button class="btn-copy" onclick="openDartpadInline()">RUN ON DARTPAD</button>
+                    <button class="btn-copy" onclick="copyCode('code-dart')">COPY CODE</button>
+                </div>
+                <pre><code id="code-dart">// ==================== CINEBOOK - VERSI SEDERHANA ====================
+// Nama: Azriel Miracle Yuandre & Esti Anggraini
+// Kelas: SI2A
+
+class Film {
+  String judul;
+  int harga;
+  int rating;
+  String genre;
+  Film(this.judul, this.harga, this.rating, this.genre);
+}
+
+class Kursi {
+  String kode;
+  bool dipesan;
+  int harga;
+  Kursi(this.kode, this.dipesan, this.harga);
+}
+
+class Tiket {
+  String nama, film, kursi;
+  int total;
+  Tiket(this.nama, this.film, this.kursi, this.total);
+}
+
+void main() {
+  List<Film> films = [
+    Film("Avengers", 50000, 5, "Action"),
+    Film("Oppenheimer", 60000, 5, "Drama"),
+  ];
+  
+  List<Tiket> tiket = [];
+  List<String> pembeli = ["Azriel", "Esti", "Ratu", "Alicia", "Budi",
+                          "Siti", "Andi", "Dewi", "Rizky", "Maya"];
+  
+  for (var nama in pembeli) {
+    tiket.add(Tiket(nama, films[0].judul, "A1", films[0].harga));
+  }
+  
+  for (var t in tiket) {
+    print("${t.nama} - ${t.film} - Rp${t.total}");
+  }
+}</code></pre>
             </div>
         </div>
     </div>
@@ -930,12 +1085,21 @@
     </div>
 </div>
 
+<!-- Modal Dartpad -->
+<div class="modal-overlay" id="codeModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title">DARTPAD LIVE EDITOR</div>
+            <button class="close-modal" onclick="closeModal('codeModal')">&times;</button>
+        </div>
+        <div class="modal-body" id="modalIframeContainer"></div>
+    </div>
+</div>
+
 <script>
     // ========================================================================
     // DATA
     // ========================================================================
-    let currentUser = "Azriel";
-
     let films = [
         { id: 1, judul: "Avengers: Endgame", emoji: "🦸", genre: "Action", rating: 5, harga: 50000 },
         { id: 2, judul: "Oppenheimer", emoji: "💣", genre: "Drama", rating: 5, harga: 60000 },
@@ -948,12 +1112,6 @@
         { nama: "Teater 1 (Reguler)", multiplier: 1.0 },
         { nama: "Teater 2 (VIP)", multiplier: 1.5 },
         { nama: "Teater 3 (IMAX)", multiplier: 2.0 },
-    ];
-
-    let diskonList = [
-        { kode: "STUDENT10", potongan: 10, minimal: 50000 },
-        { kode: "FAMILY20", potongan: 20, minimal: 100000 },
-        { kode: "WEEKEND15", potongan: 15, minimal: 75000 },
     ];
 
     let tiketList = [];
@@ -1024,24 +1182,13 @@
         `).join('');
     }
 
-    function renderDiskon() {
-        const grid = document.getElementById('diskonGrid');
-        grid.innerHTML = diskonList.map(d => `
-            <div class="diskon-card">
-                <div class="kode">${d.kode}</div>
-                <div class="potongan">${d.potongan}% OFF</div>
-                <div style="color:#888;font-size:12px;">Min. beli Rp ${d.minimal.toLocaleString()}</div>
-            </div>
-        `).join('');
-    }
-
     function renderPembeli() {
         const grid = document.getElementById('pembeliGrid');
         grid.innerHTML = pembeliList.map(nama => `
             <div class="pembeli-card ${selectedPembeli === nama ? 'active' : ''}" onclick="pilihPembeli('${nama}')">
                 <div class="nama">👤 ${nama}</div>
                 <div class="email">${nama.toLowerCase()}@cinebook.com</div>
-                <div class="tiket-count active">Tiket: 0</div>
+                <div class="tiket-count">Tiket: 0</div>
             </div>
         `).join('');
     }
@@ -1049,7 +1196,7 @@
     function renderBookingFilms() {
         const grid = document.getElementById('bookingFilmGrid');
         grid.innerHTML = films.map(f => `
-            <div class="film-card ${selectedFilm?.id === f.id ? 'selected' : ''}" style="${selectedFilm?.id === f.id ? 'border-color:#FFD700;background:rgba(255,215,0,0.05);' : ''}" onclick="pilihFilmBooking(${f.id})">
+            <div class="film-card ${selectedFilm?.id === f.id ? 'selected' : ''}" onclick="pilihFilmBooking(${f.id})">
                 <div style="font-size:30px;">${f.emoji}</div>
                 <div class="judul" style="font-size:14px;">${f.judul}</div>
                 <div class="info-row"><span class="label">Harga</span><span class="value gold">Rp ${f.harga.toLocaleString()}</span></div>
@@ -1180,18 +1327,6 @@
         }
         total = Math.floor(total * studios[selectedStudio].multiplier);
 
-        let diskon = document.getElementById('kodeDiskonInput').value.toUpperCase();
-        let diskonObj = diskonList.find(d => d.kode === diskon);
-        let diskonText = '-';
-        if (diskonObj && total >= diskonObj.minimal) {
-            let potongan = Math.floor(total * diskonObj.potongan / 100);
-            total -= potongan;
-            diskonText = `${diskonObj.kode} (-${diskonObj.potongan}%)`;
-        } else if (diskon) {
-            diskonText = 'Tidak valid';
-        }
-
-        document.getElementById('summaryDiskon').textContent = diskonText;
         document.getElementById('summaryTotal').textContent = `Rp ${total.toLocaleString()}`;
     }
 
@@ -1215,16 +1350,6 @@
         }
         total = Math.floor(total * studios[selectedStudio].multiplier);
 
-        let diskon = document.getElementById('kodeDiskonInput').value.toUpperCase();
-        let diskonObj = diskonList.find(d => d.kode === diskon);
-        let diskonTerpakai = 0;
-        let diskonKode = '-';
-        if (diskonObj && total >= diskonObj.minimal) {
-            diskonTerpakai = Math.floor(total * diskonObj.potongan / 100);
-            total -= diskonTerpakai;
-            diskonKode = diskonObj.kode;
-        }
-
         let tiket = {
             id: 'TIX' + Date.now().toString().slice(-8),
             nama: selectedPembeli,
@@ -1234,8 +1359,8 @@
             jam: selectedTime,
             kursi: selectedSeats.join(', '),
             total: total,
-            hargaAwal: total + diskonTerpakai,
-            diskon: diskonTerpakai > 0 ? `${diskonKode} (Rp ${diskonTerpakai.toLocaleString()})` : '-',
+            hargaAwal: total,
+            diskon: '-',
             tanggal: new Date().toLocaleDateString('id-ID'),
         };
 
@@ -1249,6 +1374,7 @@
         log(`✅ TRANSAKSI BERHASIL: ${selectedPembeli} memesan ${selectedFilm.judul} - Kursi ${selectedSeats.join(', ')} - Total Rp ${total.toLocaleString()}`, "success");
         alertMessage(`✅ Tiket ${selectedFilm.judul} berhasil dipesan!`, "success");
         renderTiket();
+        switchTab('tiket');
         resetBooking();
     }
 
@@ -1266,7 +1392,7 @@
             <div class="tiket-card">
                 <div class="tiket-header">
                     <h3>${t.emoji} ${t.film}</h3>
-                    <span style="background:#2ecc71;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:bold;color:#fff;">${t.diskon !== '-' ? '🎫 ' + t.diskon : '✅ LUNAS'}</span>
+                    <span style="background:#2ecc71;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:bold;color:#fff;">✅ LUNAS</span>
                 </div>
                 <div class="tiket-body">
                     <span class="label">ID Tiket</span><span class="value">${t.id}</span>
@@ -1275,8 +1401,11 @@
                     <span class="label">Jam</span><span class="value">${t.jam}</span>
                     <span class="label">Kursi</span><span class="value">${t.kursi}</span>
                     <span class="label">Tanggal</span><span class="value">${t.tanggal}</span>
-                    <span class="label">Harga Awal</span><span class="value">Rp ${t.hargaAwal.toLocaleString()}</span>
                     <span class="label">Total</span><span class="value" style="color:#FFD700;">Rp ${t.total.toLocaleString()}</span>
+                </div>
+                <div class="tiket-barcode">
+                    <img src="https://bwipjs-api.metafloor.com/?bcid=code128&text=${t.id}&scale=2&height=10&includetext=true&backgroundcolor=ffffff" alt="Barcode" onerror="this.style.display='none'">
+                    <span style="font-family:'Courier New', monospace; font-size: 11px; color: #8888bb; letter-spacing: 1px;">PINDAI TIKET DI PINTU MASUK</span>
                 </div>
             </div>
         `).join('');
@@ -1290,13 +1419,6 @@
 
         let totalTiket = tiketList.length;
         let totalPendapatan = tiketList.reduce((sum, t) => sum + t.total, 0);
-        let totalDiskon = tiketList.reduce((sum, t) => {
-            if (t.diskon !== '-') {
-                let match = t.diskon.match(/Rp ([\d.]+)/);
-                return sum + (match ? parseInt(match[1].replace(/\./g, '')) : 0);
-            }
-            return sum;
-        }, 0);
 
         let byFilm = {};
         for (let t of tiketList) byFilm[t.film] = (byFilm[t.film] || 0) + 1;
@@ -1314,11 +1436,6 @@
                     <div style="font-size:30px;">💰</div>
                     <div style="font-size:28px;font-weight:bold;color:#FFD700;">Rp ${totalPendapatan.toLocaleString()}</div>
                     <div style="color:#888;">Total Pendapatan</div>
-                </div>
-                <div style="background:rgba(52,152,219,0.1);padding:20px;border-radius:15px;text-align:center;">
-                    <div style="font-size:30px;">🎫</div>
-                    <div style="font-size:28px;font-weight:bold;color:#3498db;">Rp ${totalDiskon.toLocaleString()}</div>
-                    <div style="color:#888;">Total Diskon</div>
                 </div>
                 <div style="background:rgba(155,89,182,0.1);padding:20px;border-radius:15px;text-align:center;">
                     <div style="font-size:30px;">👤</div>
@@ -1353,7 +1470,6 @@
     function resetBooking() {
         selectedFilm = null;
         selectedSeats = [];
-        document.getElementById('kodeDiskonInput').value = '';
         renderBookingFilms();
         initSeats();
         updateSummary();
@@ -1361,12 +1477,51 @@
     }
 
     // ========================================================================
+    // CODE VIEWER FUNCTIONS
+    // ========================================================================
+    function openModal(id) {
+        const modal = document.getElementById(id);
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(id) {
+        const modal = document.getElementById(id);
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+        const iframeContainer = document.getElementById('modalIframeContainer');
+        if (iframeContainer) iframeContainer.innerHTML = '';
+    }
+
+    function copyCode(codeElementId) {
+        const codeText = document.getElementById(codeElementId).innerText;
+        navigator.clipboard.writeText(codeText).then(() => {
+            alert("Kode berhasil disalin!");
+        }).catch(() => {
+            const textSpace = document.createElement("textarea");
+            textSpace.value = codeText;
+            document.body.appendChild(textSpace);
+            textSpace.select();
+            document.execCommand('copy');
+            document.body.removeChild(textSpace);
+            alert("Kode berhasil disalin!");
+        });
+    }
+
+    function openDartpadInline() {
+        const iframeContainer = document.getElementById('modalIframeContainer');
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://dartpad.dev/embed-inline.html?theme=dark&run=true&id=e71c3be2f417e1513b71d25ce415a986`;
+        iframeContainer.innerHTML = '';
+        iframeContainer.appendChild(iframe);
+        openModal('codeModal');
+    }
+
+    // ========================================================================
     // INIT
     // ========================================================================
-    document.getElementById('userName').textContent = currentUser;
     renderFilms();
     renderBookingFilms();
-    renderDiskon();
     renderPembeli();
     initSeats();
     updateSummary();
